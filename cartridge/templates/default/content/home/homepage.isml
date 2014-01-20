@@ -1,0 +1,7 @@
+<!--- TEMPLATENAME: homepage.isml --->
+<head>
+<title><isprint value="${pdict.CurrentPageMetaData.title}" encoding="off" /></title>
+</head>
+<body>
+WELCOME!
+</body>
