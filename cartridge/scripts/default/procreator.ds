@@ -1,0 +1,21 @@
+importPackage( dw.system );
+
+function cartwheel( x : Object, y : Object ) : Object
+{
+   	var xy : Object = new Object();
+   	var xattr : Map = Object.keys(x);
+   	var yattr : Map = Object.keys(y);
+   	
+	for(var i : Number = 0; i < xattr.length; i++){
+		var prop = xattr[i].toString();	
+		if(!yattr[prop])	
+			Object.defineProperty(xy, prop, {value : x[xattr[i]], writable: true});
+	}
+		
+	for(var i : Number = 0; i < yattr.length; i++){
+		var prop = yattr[i].toString();		
+		Object.defineProperty(xy, prop, {value : y[yattr[i]], writable: true});
+	}
+		
+   return xy;
+}

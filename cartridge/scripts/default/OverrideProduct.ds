@@ -18,19 +18,20 @@
 */
 importPackage( dw.system );
 importScript("util/getImageLocation.ds");
+importScript("default/procreator.ds");
+importScript("product/chris.ds");
 importPackage(dw.util);
 
 function execute( args : PipelineDictionary ) : Number
 {
-	/*
-	args.Product = {ID : args.product.ID, 
-		upc : args.product.UPC,
-		shortDescription : args.product.shortDescription,
-		name : args.product.name,
-		master : args.product.master,
-		getImage : function(x){return x;}
-	}*/
+	var chris = chrisprod();
+	args.Product = cartwheel(args.product, chris); 
 	
+	
+	
+	
+	/*
+
 	
 	args.Product = new Object();
 	var prodAttributes : Map = Object.keys(args.product);
@@ -42,7 +43,7 @@ function execute( args : PipelineDictionary ) : Number
 	
 	Object.defineProperty(args.Product, "getImage", {value : function(){return getImageLocation(args.Product.ID, 'jpg', false);}});
 	//args.Product.isAssignedToCategory(new dw.catalog.Category);
-	
+	*/
 
    return PIPELET_NEXT;
 }

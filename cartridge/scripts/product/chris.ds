@@ -1,0 +1,12 @@
+importPackage( dw.system );
+
+function chrisprod() : Object
+{
+	var x : Object =  new Object();
+	
+	x.killchris = function() { return "KILL CHRIS"; }
+	
+	x.name = "KILL CHRIS";
+
+	return x;
+}
