@@ -1,2 +1,7 @@
 we have a product:
 ${pdict.Product}
+
+${pdict.Product.ID}
+${pdict.Product.UPC}
+${pdict.Product.name}
+${pdict.Product.getImage()}
