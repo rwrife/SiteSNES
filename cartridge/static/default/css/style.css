@@ -161,5 +161,21 @@ display:block;
 }
 
 #product-details h1 {
-	font-size:2em;
+	font-size:1.8em;
+}
+
+.product-pricing strike h2 {
+	font-size:1.1em;
+}
+
+.product-pricing strike h2{
+	font-size:1em;
+}
+
+.product-pricing h3{
+	font-size:1.1em;
+}
+
+.product-pricing .sale {
+	color:red;
 }

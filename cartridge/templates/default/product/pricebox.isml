@@ -1,0 +1,13 @@
+<!--- TEMPLATENAME: pricebox.isml --->
+<div class="product-pricing">
+	<isset name="currencyCode" value="${dw.system.Site.getCurrent().currencyCode}" scope="page"/>
+	<isif condition="${pdict.PriceStack != null}">
+		<isif condition="${pdict.PriceStack.sale != null}">
+			<strike><h2 class="regular">Price: <isprint value="${dw.util.StringUtils.formatMoney(dw.value.Money(pdict.PriceStack.regular.price, currencyCode))}"/></h2></strike>
+			<h3 class="sale">Sale: <isprint value="${dw.util.StringUtils.formatMoney(dw.value.Money(pdict.PriceStack.sale.price, currencyCode))}"/></h3>
+			<isif condition="${pdict.PriceStack.sale.callout != null}"><h2 class="callout">${pdict.PriceStack.sale.callout}</h2></isif>
+		<iselseif condition="${pdict.PriceStack.regular != null}">
+			<h3 class="regular">Price: <isprint value="${dw.util.StringUtils.formatMoney(dw.value.Money(pdict.PriceStack.regular.price, currencyCode))}"/></h3>
+		</isif>	
+	</isif>		
+</div>

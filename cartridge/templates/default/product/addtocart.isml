@@ -1,0 +1,11 @@
+	<div class="grid">
+		<div class="col_12 left">
+			<isinclude template="product/pricebox" />
+		</div>		
+		<div class="col_6 center">
+			<button class="medium orange"><i class="icon-shopping-cart"></i>  Add To Cart</button>
+		</div>
+		<div class="col_6 center">
+			<button class="medium green"><i class="icon-money"></i>  Quick Buy</button>
+		</div>
+	</div>
