@@ -16,4 +16,19 @@
 	</ul>
 </li>
 <li><a href="">Item 4</a></li>
+<li>
+<form id="searchform" action="search-show" method="get">
+<input id="q" name="q" type="text" placeholder="Search..."/>
+<button class="pill"><i class="icon-search"></i>search</button>
+<script type="text/javascript">
+	 $("#searchform").submit(function(event){
+		 if(!$("#q").val()){
+		 	$("#q").addClass("error");
+		 	return false;
+		 }
+	 
+	 });
+	</script>
+</form>
+</li>
 </ul>

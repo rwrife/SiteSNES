@@ -1,5 +1,5 @@
 <head>
-<title>HTML KickStart Elements</title>
+<title><isprint value="${pdict.CurrentPageMetaData.title}" encoding="off"></title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="stylesheet" type="text/css" href="${URLUtils.staticURL('/css/kickstart.css')}" media="all" />
