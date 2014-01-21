@@ -1,1 +1,5 @@
-product not found!
+<isdecorate template="components/site/pt_site">
+	<div class="grid">
+	<div class="col_12 center">product not found!</div>
+	</div>
+</isdecorate>

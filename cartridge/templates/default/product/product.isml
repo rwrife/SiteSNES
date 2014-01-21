@@ -1,10 +1,9 @@
-we have a product:
 <isdecorate template="components/site/pt_site">
 <div id="product-details" class="grid">
 	<div class="col_5">
-		<isset name="image" value="${pdict.Product.getImage('large',0)}" scope="page"/>	
+		<isset name="image" value="${pdict.Product.getImage()}" scope="page"/>	
 			<isif condition="${!empty(image)}">
-					<isset name="imageUrl" value="${image.getURL()}" scope="page"/>
+					<isset name="imageUrl" value="${image}" scope="page"/>
 			<iselse>
 					<isset name="imageUrl" value="${URLUtils.staticURL('/img/no-available-image.png')}" scope="page"/>
 			</isif>
@@ -16,14 +15,9 @@ we have a product:
 		<isif condition="${!empty(pdict.Product.UPC)}">
 			<div class="col_12"><h6>${pdict.Product.UPC}</h6></div>
 		</isif>
-		
-		<div class="col_6 center">
-			<button class="medium orange"><i class="icon-shopping-cart"></i>  Add To Cart</button>
-		</div>
-		<div class="col_6 center">
-			<button class="medium green"><i class="icon-money"></i>  Quick Buy</button>
-		</div>
-		
+		<div class="col_12">
+			<isinclude template="product/addtocart"/>
+		</div>		
 	</div>
 	
 	<div class="col_12">
@@ -31,7 +25,7 @@ we have a product:
 			<li><a href="#tabr1">Description</a></li>
 			<li><a href="#tabr2">Specs</a></li>
 		</ul>
-		<div id="tabr1" class="tab-content">${pdict.Product.longDescription}</div>
+		<div id="tabr1" class="tab-content"><isprint value="${pdict.Product.longDescription}" encoding="off"/></div>
 		<div id="tabr2" class="tab-content">Tab2</div>
 	</div>
 </div>
