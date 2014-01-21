@@ -1,0 +1,19 @@
+importPackage( dw.system );
+importScript("custom/getImageLocation.ds");
+
+function extendProduct() : Object
+{
+	var x : Object =  new Object();
+	
+	x.getImage = function(size : String, index : Number) { 
+		var pid = this.ID;
+		return new Object(){getURL : function() {		
+			return getImageLocation(pid, 'jpg', false);
+			}
+		}; 
+	};
+	
+	x.test = function() {return this.ID;};
+
+	return x;
+}

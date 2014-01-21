@@ -26,7 +26,7 @@
 			<li><a href="#tabr2">Specs</a></li>
 		</ul>
 		<div id="tabr1" class="tab-content"><isprint value="${pdict.Product.longDescription}" encoding="off"/></div>
-		<div id="tabr2" class="tab-content">${pdict.Product.killchris()}</div>
+		<div id="tabr2" class="tab-content">${pdict.Product.getImage("adsf",3).getURL()}</div>
 	</div>
 </div>
 </isdecorate>

@@ -1,0 +1,290 @@
+importPackage( dw.system );
+importPackage( dw.util );
+importPackage( dw.web );
+importPackage( dw.value );
+importPackage( dw.catalog );
+
+/**
+ * This function returns the getImageLocation URI with appended heights and widths.
+ *
+ * @param productID
+ * @param type
+ * @param secure
+ * @param height
+ * @param width
+ * @returns An image URI with height and width appended.
+ */
+function getImageLocationWithHeightWidth(productID : String, type : String, secure : Boolean, height:String, width:String)
+{
+	var product = dw.catalog.ProductMgr.getProduct(productID);
+	var imageLocation:String = getImageLocation(productID,type,secure);
+		
+	if( hasImage(product) )
+	{
+		imageLocation += "&h=" + height + "&w=" + width;	
+	}
+
+	return imageLocation;
+}
+
+/**
+ * This function returns the getImageLocation URI with appended heights and widths.
+ *
+ * @param productID
+ * @param type
+ * @param secure
+ * @param height
+ * @param width
+ * @param rank  
+ * @returns An image URI with height and width appended.
+ */
+function getImageLocationWithHeightWidthRank(productID : String, type : String, secure : Boolean, height:String, width:String, rank:String)
+{
+	var product = dw.catalog.ProductMgr.getProduct(productID);
+	var imageLocation:String = getImageLocationWithRank(productID,type,secure, rank);
+		
+	if( hasImage(product) )
+	{
+		imageLocation += "&h=" + height + "&w=" + width;	
+	}
+
+	return imageLocation;
+}
+
+//This will return either a thumbnail (gif type) or large image for PD page (jpg type)
+function getImageLocation( productID : String, type : String, secure : Boolean) : String
+{
+	var defaultImg : String = getDefaultImg();
+	
+	try
+	{
+		if (secure != true)
+			var secure : Boolean = false;
+	
+		var imgLocation : String;
+		var imgAttribute : String;
+		var product = dw.catalog.ProductMgr.getProduct(productID);
+	
+		if (product != null)
+		{
+			imgAttribute = getImageId(product);
+			var imgRank:String = getImageRank(product,0);
+			
+			imgLocation = 'http' + (secure ? 's' : '') + '://'+getImageServer(secure) + "/loadimage.aspx?btype=."+type+"&cgid="+imgAttribute+"&img="+imgRank;
+		}
+		
+		if ( hasImage(product) ) {
+			return imgLocation;
+		}	
+		else {
+			return defaultImg;
+		}		
+	}
+	catch(e)
+	{
+		Logger.warn("getImageLocation Failure:" + e);	
+	}
+	
+	return defaultImg;
+}
+
+//This will return either a thumbnail (gif type) or large image for PD page (jpg type)
+function getImageLocationWithRank( productID : String, type : String, secure : Boolean, rank : String) : String
+{
+	var defaultImg : String = getDefaultImg();
+	
+	try
+	{
+		if (!secure)
+			var secure : Boolean = false;
+	
+		var imgLocation : String;
+		var imgAttribute : String;
+		var product = dw.catalog.ProductMgr.getProduct(productID);
+	
+		if (product != null)
+		{
+			imgAttribute = getImageId(product);
+			imgLocation = 'http' + (secure ? 's' : '') + '://'+getImageServer(secure) + "/loadimage.aspx?btype=."+type+"&cgid="+imgAttribute+"&img="+rank;
+		}
+		
+		if ( hasImage(product) ) {
+			return imgLocation;
+		}	
+		else {
+			return defaultImg;
+		}		
+	}
+	catch(e)
+	{
+		Logger.warn("getImageLocation Failure:" + e);	
+	}
+	
+	return defaultImg;
+}
+
+function getImageServer(secure : Boolean) : String
+{
+	var serverList : List = new ArrayList();
+	var server : String = null;
+
+	serverList.add("i0.jtv.com");
+	serverList.add("i1.jtv.com");
+	serverList.add("i2.jtv.com");
+	serverList.add("i3.jtv.com");
+	serverList.add("i4.jtv.com");
+
+	if (serverList.size() == 1)
+	{
+		return serverList.get(0);
+	}
+	else
+	{
+		var randomnumber : Number = Math.floor(Math.random() * serverList.size());
+		server = serverList.get(randomnumber);
+	}
+	
+	return server;	
+}
+//This function will generate a image from the image id
+function getImageLocationWithImageID(imageID : String,  type : String,  secure : Boolean) : String
+{
+	var defaultImg : String = getDefaultImg();
+	var imgLocation : String;
+	try
+	{
+		imgLocation = 'http' + (secure ? 's' : '') + '://'+getImageServer(secure) + "/loadimage.aspx?btype=."+type+"&cgid="+imageID;	
+	}
+	catch(e)
+	{
+		Logger.warn("getImageLocationWithImageID Failure:" + e);	
+	}
+	
+	return imgLocation;
+}
+
+
+//This function will generate a large image congruent to what we have on the current site
+function getLargeImage( productID : String, secure : Boolean) : String
+{
+	return getImageLocationWithHeightWidth(productID,"jpg",secure,"400","533");
+}
+
+function getMediumImage( productID : String, secure : Boolean) : String
+{
+	return getImageLocation(productID,"jpg",secure);
+}
+
+/* get large catalog image */
+function getLargestCatalogImage( productID : String, secure : Boolean) : String
+{
+	return getImageLocationWithHeightWidth(productID,"jpg",secure,"135","180");
+}
+
+function getLargeCatalogImage( productID : String, secure : Boolean) : String
+{
+	return getImageLocationWithHeightWidth(productID,"jpg",secure,"95","127");
+}
+
+function getSmallImage( productID : String, secure : Boolean) : String
+{
+	return getImageLocationWithHeightWidth(productID,"jpg",secure,"50","67");
+}
+
+//this function generates a default 'no image available' if there is an error loading image
+function getDefaultImg() {
+	var image : String = URLUtils.absStatic('../images/image_not_available.gif');
+	return image;
+}
+
+/**
+ * @returns A Boolean value indicating whether or not the product has images.
+ */
+function hasImage(prod:dw.catalog.Product):Boolean
+{
+	var imageId:String = getImageId(prod);
+	
+	if(imageId != undefined && imageId !="")
+	{
+		return true;
+	}
+	
+	return false;
+}
+
+/**
+ * @returns A boolean value indicating whether or not the product has videos.
+ */
+function hasVideo(prod:dw.catalog.Product):Boolean
+{
+	if(getVideoCount(prod) > 0)
+	{
+		return true;	
+	}
+	
+	return false;
+}
+
+/**
+ * @returns A string containing the image id of the product.
+ */
+function getImageId(prod:dw.catalog.Product):String
+{
+	return prod.custom.A_IMAGE_ID[0];
+}
+
+/**
+ * @returns The count of images for this product.
+ */
+function getImageCount(prod:Product):Number
+{
+	return getImageRanks(prod).length;	
+}
+
+function getVideoCount(prod:Product):Number
+{
+	return prod.custom.A_VIDEO_ID.length;	
+}
+
+/**
+ * @returns An ArrayList of image ranks in ascending order.
+ */
+function getImageRanks(prod:Product):ArrayList
+{
+	var actualRanks:ArrayList = new ArrayList();
+/*	var fakeRanks:Array = new Array();
+	fakeRanks[0]="2";
+	fakeRanks[1]="3";
+	fakeRanks[3]="1";
+	
+	for each( rank in fakeRanks )
+	{
+		actualRanks.add(rank);
+	}*/
+	
+	var ranks:Array = prod.custom.A_IMAGE_RANK;
+	for each(rank in ranks)
+	{
+		actualRanks.add(rank);	
+	}
+	
+	actualRanks.sort();
+	
+	return actualRanks;	
+}
+
+/**
+ * @param prod:Product The product to get the image rank of.
+ * @param rankIndex:Number The index of the rank.
+ * @returns The image rank at the specified index of the rank list.
+ */
+function getImageRank(prod:Product,rankIndex:Number):String
+{
+	var ranksList:ArrayList = getImageRanks(prod);
+	if (ranksList.size() > rankIndex)
+	{
+		return ranksList.get(rankIndex);
+	}
+	
+	return "";
+}
