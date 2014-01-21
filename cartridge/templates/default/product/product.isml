@@ -1,10 +1,9 @@
-we have a product:
 <isdecorate template="components/site/pt_site">
 <div id="product-details" class="grid">
 	<div class="col_5">
-		<isset name="image" value="${pdict.Product.getImage('large',0)}" scope="page"/>	
+		<isset name="image" value="${pdict.Product.getImage()}" scope="page"/>	
 			<isif condition="${!empty(image)}">
-					<isset name="imageUrl" value="${image.getURL()}" scope="page"/>
+					<isset name="imageUrl" value="${image}" scope="page"/>
 			<iselse>
 					<isset name="imageUrl" value="${URLUtils.staticURL('/img/no-available-image.png')}" scope="page"/>
 			</isif>
