@@ -1,0 +1,26 @@
+<!--- TEMPLATENAME: producttile.isml --->
+<div class="col_3 product-tile">
+					
+			<isset name="image" value="${pdict.product.getImage('medium',0)}" scope="page"/>			
+
+			<isif condition="${!empty(image)}">
+				<isset name="thumbnailUrl" value="${image.getURL()}" scope="page"/>
+				<isset name="thumbnailAlt" value="${image.alt}" scope="page"/>
+				<isset name="thumbnailTitle" value="${image.title}" scope="page"/>
+			<iselse>
+				<isset name="thumbnailUrl" value="${URLUtils.staticURL('/img/no-available-image.png')}" scope="page"/>
+				<isset name="thumbnailAlt" value="${pdict.product.name}" scope="page"/>
+				<isset name="thumbnailTitle" value="${pdict.product.name}" scope="page"/>
+			</isif>
+	
+	<a class="thumb-link" href="${URLUtils.url('product-show','pid',pdict.product.ID)}" title="${pdict.product.name}">
+		<div class="caption caption">
+			<img src="${thumbnailUrl}" alt="${thumbnailAlt}" title="${thumbnailTitle}" class="full-width"/>
+			
+			<span class="product-name">${pdict.product.name}</span>
+		</div>
+	</a>
+		
+	
+	
+</div>
