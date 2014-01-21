@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html>
+<isinclude template="/components/site/header" />
+<body>
+<isinclude template="/components/site/menu" />
+<isreplace/>
+<isinclude template="/components/site/footer" />
+</body></html>
