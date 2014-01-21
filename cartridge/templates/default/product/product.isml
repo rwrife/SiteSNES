@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+we have a product:
 <isdecorate template="components/site/pt_site">
 <div id="product-details" class="grid">
 	<div class="col_5">
@@ -30,3 +32,4 @@
 	</div>
 </div>
 </isdecorate>
+>>>>>>> 39758a5210ad11aba14e0be0987dfa6ac7a2e0f0
