@@ -1,5 +1,6 @@
 <ul class="menu">
-<li class="current"><a href="">Item 1</a></li>
+<li><a href="${URLUtils.url('home-show')}">Home</a></li>
+<li><a href="${URLUtils.url('search-show','cgid','womens')}">Womens</a></li>
 <li><a href="">Item 2</a></li>
 <li><a href=""><span class="icon" data-icon="R"></span>Item 3</a>
 	<ul>

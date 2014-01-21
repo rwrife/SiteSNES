@@ -160,8 +160,6 @@ display:block;
 	}
 }
 
-#resultsgrid div.caption span {
-	line-height: 1.6em;
-	height: 3em;
-	overflow: hidden;
+#product-details h1 {
+	font-size:2em;
 }
