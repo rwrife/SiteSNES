@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 we have a product:
+${pdict.Product}
+
+${pdict.Product.ID}
+${pdict.Product.UPC}
+${pdict.Product.name}
+${pdict.Product.getImage()}
+=======
 <isdecorate template="components/site/pt_site">
 <div id="product-details" class="grid">
 	<div class="col_5">
@@ -16,9 +24,14 @@ we have a product:
 		<isif condition="${!empty(pdict.Product.UPC)}">
 			<div class="col_12"><h6>${pdict.Product.UPC}</h6></div>
 		</isif>
-		<div class="col_12">
-			<isinclude template="product/addtocart"/>
-		</div>		
+		
+		<div class="col_6 center">
+			<button class="medium orange"><i class="icon-shopping-cart"></i>  Add To Cart</button>
+		</div>
+		<div class="col_6 center">
+			<button class="medium green"><i class="icon-money"></i>  Quick Buy</button>
+		</div>
+		
 	</div>
 	
 	<div class="col_12">
@@ -26,8 +39,9 @@ we have a product:
 			<li><a href="#tabr1">Description</a></li>
 			<li><a href="#tabr2">Specs</a></li>
 		</ul>
-		<div id="tabr1" class="tab-content"><isprint value="${pdict.Product.longDescription}" encoding="off"/></div>
+		<div id="tabr1" class="tab-content">${pdict.Product.longDescription}</div>
 		<div id="tabr2" class="tab-content">Tab2</div>
 	</div>
 </div>
 </isdecorate>
+>>>>>>> 39758a5210ad11aba14e0be0987dfa6ac7a2e0f0
