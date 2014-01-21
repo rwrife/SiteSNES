@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 we have a product:
+${pdict.Product}
+
+${pdict.Product.ID}
+${pdict.Product.UPC}
+${pdict.Product.name}
+${pdict.Product.getImage()}
+=======
 <isdecorate template="components/site/pt_site">
 <div id="product-details" class="grid">
 	<div class="col_5">
@@ -36,3 +44,4 @@ we have a product:
 	</div>
 </div>
 </isdecorate>
+>>>>>>> 39758a5210ad11aba14e0be0987dfa6ac7a2e0f0
