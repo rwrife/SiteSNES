@@ -15,8 +15,9 @@
 	
 	<a class="thumb-link" href="${URLUtils.url('Product-Show','pid',pdict.product.ID)}" title="${pdict.product.name}">
 		<div class="caption caption">
-			<img src="${thumbnailUrl}" alt="${thumbnailAlt}" title="${thumbnailTitle}" class="full-width"/>
-			
+			<div class="product-tile-image-wrapper">
+			<img src="${thumbnailUrl}" alt="${thumbnailAlt}" title="${thumbnailTitle}" class="product-tile-image "/>
+			</div>
 			<span class="product-name">${pdict.product.name}</span>
 		</div>
 	</a>

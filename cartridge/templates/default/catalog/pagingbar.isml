@@ -26,11 +26,11 @@
 			<li class="first">
 				<isif condition="${currentPage > 0}"><a rel="prev" href="${pdict.ProductPagingModel.appendPaging( pageURL, current - pageSize)}"><i class="icon-caret-left"></i></a>
 				<iselse>
-					<a href="javascript:void()"><i class="icon-caret-left disabled"></i></a>
+					<a href="javascript:void(0);"><i class="icon-caret-left disabled"></i></a>
 				</isif>				
 			</li>
 			<li class="disabled">
-				<a href="javascript:void()" style="padding: 5px 25px;">Page
+				<a href="javascript:void(0);" style="padding: 5px 25px;">Page
 				<select id="page" name="page" onchange="window.location.href=options[selectedIndex].value; return false;">
 					<isloop status="i" begin="${0}" end="${pdict.ProductPagingModel.pageCount - 1}">
 						<isif condition="${i.index != currentPage}">
@@ -46,7 +46,7 @@
 			<li class="last">
 				<isif condition="${maxPage >= 1 && current < totalCount - pageSize}"><a rel="next" class="right_arrow" href="${pdict.ProductPagingModel.appendPaging( pageURL, current + pageSize)}&showProducts=1"><i class="icon-caret-right"></i></a>
 				<iselse>
-					<a href="javascript:void()"><i class="icon-caret-right disabled"></i></a>
+					<a href="javascript:void(0);"><i class="icon-caret-right disabled"></i></a>
 				</isif>			
 			</li>
 		</ul>

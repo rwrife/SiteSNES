@@ -22,17 +22,16 @@
 <script type="text/javascript">
 $(window).load(function(){
     var $container = $('#resultsgrid');
-    $container.isotope({
+    
+    $container.isotope({    	
         filter: '*',
         animationOptions: {
             duration: 550,
             easing: 'linear',
             queue: false
-        },
-          masonryHorizontal: {
-    rowHeight: 360
-  }
+        }
     });
+    
 });
 </script>
 </isdecorate>
