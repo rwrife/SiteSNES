@@ -8,13 +8,31 @@
 	<div class="col_2" id="refinements">
 	refinements go here
 	</div>
-	<div class="col_10" id="resultsgrid">
+	<div class="col_10">
+		<div class="col_12 grid" id="resultsgrid">
 		<isloop iterator="${pdict.ProductPagingModel.pageElements}" alias="LoopProduct" status="loopstate">			
 			<isproducttile product="${LoopProduct.product}" />			
 		</isloop>		
+		</div>
 		<div class="col_12">
 		<isinclude template="catalog/pagingbar"/>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+$(window).load(function(){
+    var $container = $('#resultsgrid');
+    $container.isotope({
+        filter: '*',
+        animationOptions: {
+            duration: 550,
+            easing: 'linear',
+            queue: false
+        },
+          masonryHorizontal: {
+    rowHeight: 360
+  }
+    });
+});
+</script>
 </isdecorate>
