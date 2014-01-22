@@ -11,7 +11,7 @@
 			<img src="${imageUrl}" alt="${pdict.Product.name}" title="" class="caption"/>
 	</div>
 	<div class="col_7">
-		<div class="col_12"><h1>${pdict.Product.name}</h1></div>
+		<div class="col_12 product-name"><h1>${pdict.Product.name}</h1></div>
 		<isif condition="${!empty(pdict.Product.UPC)}">
 			<div class="col_12"><h6>${pdict.Product.UPC}</h6></div>
 		</isif>

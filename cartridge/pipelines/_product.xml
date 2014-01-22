@@ -65,30 +65,8 @@
         </transition-display>
       </simple-transition>
       <node>
-        <pipelet-node pipelet-name="Script" pipelet-set-identifier="bc_api">
-          <config-property key="Transactional" value="false"/>
-          <config-property key="OnError" value="PIPELET_ERROR"/>
-          <config-property key="ScriptFile" value="custom/overrideproduct.ds"/>
-          <key-binding alias="LOG" key="ScriptLog"/>
-          <key-binding alias="Product" key="product"/>
-          <key-binding alias="Product" key="Product"/>
-        </pipelet-node>
-        <node-display x="0" y="1"/>
-        <branch basename="b2" source-connector="error">
-          <transition target-connector="in2" target-path="./+1"/>
-        </branch>
-      </node>
-      <transition target-connector="in1" target-path="./+1"/>
-    </segment>
-    <segment>
-      <node>
-        <join-node/>
-        <node-display x="0" y="1"/>
-      </node>
-      <simple-transition/>
-      <node>
         <end-node/>
-        <node-display x="0" y="1"/>
+        <node-display x="0" y="3"/>
       </node>
     </segment>
   </branch>
@@ -122,6 +100,31 @@
       </simple-transition>
       <node>
         <end-node/>
+        <node-display x="0" y="1"/>
+      </node>
+    </segment>
+  </branch>
+  <branch basename="_ANONYMOUS_BRANCH_7">
+    <segment>
+      <node>
+        <pipelet-node pipelet-name="Script" pipelet-set-identifier="bc_api">
+          <config-property key="Transactional" value="false"/>
+          <config-property key="OnError" value="PIPELET_ERROR"/>
+          <config-property key="ScriptFile" value="custom/overrideproduct.ds"/>
+          <key-binding alias="LOG" key="ScriptLog"/>
+          <key-binding alias="Product" key="product"/>
+          <key-binding alias="Product" key="Product"/>
+        </pipelet-node>
+        <node-display x="0" y="3"/>
+        <branch basename="b2" source-connector="error">
+          <transition target-connector="in2" target-path="./+1"/>
+        </branch>
+      </node>
+      <transition target-connector="in1" target-path="./+1"/>
+    </segment>
+    <segment>
+      <node>
+        <join-node/>
         <node-display x="0" y="1"/>
       </node>
     </segment>

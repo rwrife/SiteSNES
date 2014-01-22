@@ -2,7 +2,7 @@
 	current = pdict.ProductPagingModel.start;
 	totalCount = pdict.ProductPagingModel.count;
 	pageSize = pdict.ProductPagingModel.pageSize;
-	pageURL = pdict.ProductSearchResult.url('search-show');
+	pageURL = pdict.ProductSearchResult.url('Search-Show');
 	currentPage = pdict.ProductPagingModel.currentPage;
 	maxPage = pdict.ProductPagingModel.maxPage;
 	lr = 5; // number of explicit page links to the left and right
