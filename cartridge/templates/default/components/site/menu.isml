@@ -1,38 +1,41 @@
-<ul class="menu">
-<li><a href="${URLUtils.url('Default-Start')}">Home</a></li>
-<li><a href="${URLUtils.url('Search-Show','cgid','womens')}">Womens</a></li>
-<li><a href="${URLUtils.url('Search-Show','cgid','mens')}">Mens</a></li>
-<li><a href=""><span class="icon" data-icon="R"></span>Drop Menu</a>
-	<ul>
-	<li><a href=""><span class="icon" data-icon="G"></span>Sub Item</a></li>
-	<li><a href=""><span class="icon" data-icon="A"></span>Sub Item</a>
-		<ul>
-		<li><a href=""><span class="icon" data-icon="Z"></span>Sub Item</a></li>
-		<li><a href=""><span class="icon" data-icon="k"></span>Sub Item</a></li>
-		<li><a href=""><span class="icon" data-icon="J"></span>Sub Item</a></li>
-		<li><a href=""><span class="icon" data-icon="="></span>Sub Item</a></li>
-		</ul>
+<isinclude template="util/modules"/>
+
+<isscript>
+	importScript( "sitegenesis_storefront_core:util/ViewHelpers.ds" );
+	var topLevelCategory = getTopLevelCategory();
+</isscript>
+
+	<li style="display:none;">
+	<form id="searchform" action="${URLUtils.url('Search-Show')}" method="get">
+	<input id="q" name="q" type="text" placeholder="Search..."/>
+	<button class="pill"><i class="icon-search"></i>search</button>
+	<script type="text/javascript">
+		 $("#searchform").submit(function(event){
+			 if(!$("#q").val()){
+			 	$("#q").addClass("error");
+			 	return false;
+			 }	 
+		 });
+		</script>
+	</form>
 	</li>
-	<li class="divider"><a href=""><span class="icon" data-icon="T"></span>li.divider</a></li>
+
+<div role="navigation">
+	<ul>
+		<li><a href="${URLUtils.url('Default-Start')}">Home</a></li>
+		<isif condition="${topLevelCategory != null}">			
+			<isloop items="${getSubcategoriesInMenuForCategory(topLevelCategory)}" var="topCat" status="catstatus">			
+				<li ${catstatus.first ? 'class=first' : ''} ${catstatus.last ? 'class=last' : ''}>
+					<a href="<isprint value="${MainNavigationUtilities.getCategoryUrl(topCat)}" encoding="off"/>" class="level-1">
+						<isprint value="${topCat.getDisplayName()}"/>
+					</a>
+					<div class="submenu">
+						<iscategoryflyout category="${topCat}"/>
+					</div>
+				</li>
+
+			</isloop>		
+		</isif>																														
 	</ul>
-</li>
-<li><a href="">Large Menu</a>
-	<ul><li>
-	<div style="height:200px;width:500px;background-color:#fff;padding:15px;">HELLO WORLD</div>
-	</li></ul>
-</li>
-<li>
-<form id="searchform" action="${URLUtils.url('Search-Show')}" method="get">
-<input id="q" name="q" type="text" placeholder="Search..."/>
-<button class="pill"><i class="icon-search"></i>search</button>
-<script type="text/javascript">
-	 $("#searchform").submit(function(event){
-		 if(!$("#q").val()){
-		 	$("#q").addClass("error");
-		 	return false;
-		 }	 
-	 });
-	</script>
-</form>
-</li>
-</ul>
+</div>	
+

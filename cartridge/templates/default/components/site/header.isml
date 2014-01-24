@@ -4,9 +4,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="stylesheet" type="text/css" href="${URLUtils.staticURL('/css/style.css')}" media="all" />
 <link rel="stylesheet" type="text/css" href="${URLUtils.staticURL('/css/kickstart.css')}" media="all" />
+<link rel="stylesheet" type="text/css" href="${URLUtils.staticURL('/css/supamenu.css')}" media="all" />
 <link rel="stylesheet" type="text/css" href="${URLUtils.staticURL('/css/snes.css')}" media="all" />
 
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="${URLUtils.staticURL('/js/isotope.pkgd.min.js')}"></script>
 <script type="text/javascript" src="${URLUtils.staticURL('/js/kickstart.js')}"></script>
+<script type="text/javascript" src="${URLUtils.staticURL('/js/supamenu.js')}"></script>
 </head>
