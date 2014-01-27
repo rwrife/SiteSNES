@@ -1,5 +1,5 @@
 <!--- TEMPLATENAME: producttile.isml --->
-<div class="col_3 product-tile">
+<div class="product-tile col_3">
 					
 			<isset name="image" value="${pdict.product.getImage('medium',0)}" scope="page"/>			
 
