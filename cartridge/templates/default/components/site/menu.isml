@@ -4,7 +4,7 @@
 	importScript( "sitegenesis_storefront_core:util/ViewHelpers.ds" );
 	var topLevelCategory = getTopLevelCategory();
 </isscript>
-
+<!-- 
 	<li style="display:none;">
 	<form id="searchform" action="${URLUtils.url('Search-Show')}" method="get">
 	<input id="q" name="q" type="text" placeholder="Search..."/>
@@ -19,23 +19,26 @@
 		</script>
 	</form>
 	</li>
-
+ -->
 <div role="navigation">
-	<ul>
-		<li><a href="${URLUtils.url('Default-Start')}">Home</a></li>
-		<isif condition="${topLevelCategory != null}">			
-			<isloop items="${getSubcategoriesInMenuForCategory(topLevelCategory)}" var="topCat" status="catstatus">			
-				<li ${catstatus.first ? 'class=first' : ''} ${catstatus.last ? 'class=last' : ''}>
-					<a href="<isprint value="${MainNavigationUtilities.getCategoryUrl(topCat)}" encoding="off"/>" class="level-1">
-						<isprint value="${topCat.getDisplayName()}"/>
-					</a>
-					<div class="submenu">
-						<iscategoryflyout category="${topCat}"/>
-					</div>
-				</li>
-
-			</isloop>		
-		</isif>																														
-	</ul>
+	<div class="grid center">
+		<ul class="col_12">
+			<li><a href="${URLUtils.url('Default-Start')}">Home</a></li>
+			<isif condition="${topLevelCategory != null}">			
+				<isloop items="${getSubcategoriesInMenuForCategory(topLevelCategory)}" var="topCat" status="catstatus">			
+					<li ${catstatus.first ? 'class=first' : ''} ${catstatus.last ? 'class=last' : ''}>
+						<a href="<isprint value="${MainNavigationUtilities.getCategoryUrl(topCat)}" encoding="off"/>" class="level-1">
+							<isprint value="${topCat.getDisplayName()}"/>
+						</a>
+						<div class="submenu">
+							<iscategoryflyout category="${topCat}"/>
+						</div>
+					</li>
+	
+				</isloop>		
+			</isif>		
+			<li id="morenav" role="morenavigation"><div>more<div class="caret"></div></div><ul class="morenav"></ul></li>																										
+		</ul>
+	</div>
 </div>	
 

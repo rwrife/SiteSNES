@@ -1,7 +1,7 @@
 <head>
 <title><isprint value="${pdict.CurrentPageMetaData.title}" encoding="off"></title>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" type="text/css" href="${URLUtils.staticURL('/css/style.css')}" media="all" />
 <link rel="stylesheet" type="text/css" href="${URLUtils.staticURL('/css/kickstart.css')}" media="all" />
 <link rel="stylesheet" type="text/css" href="${URLUtils.staticURL('/css/supamenu.css')}" media="all" />
